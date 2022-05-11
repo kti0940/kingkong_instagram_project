@@ -1,412 +1,675 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <!-- 부트스트랩 사용 -->
-    <link
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- 부트스트랩 사용 -->
+        <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
             rel="stylesheet"
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
             crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" media="all and (min-width:1200px)" href="desktop.css">
-    <link rel="stylesheet" media="all and (min-width:768px) and (max-width:1199px)" href="laptop.css">
+        />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" media="all and (min-width:1200px)" href="desktop.css" />
+        <link rel="stylesheet" media="all and (min-width:768px) and (max-width:1199px)" href="laptop.css" />
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- 아이콘 추가 -->
-    <script src="https://kit.fontawesome.com/f051361119.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-    <title>Instagram</title>
-    <style>
-        @media all and (max-width: 1000px) {
-            .desktop {
-                display: none;
-            }
-        }
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- 아이콘 추가 -->
+        <script src="https://kit.fontawesome.com/f051361119.js" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 
-        /*색상설정*/
-        :root {
-            --white: #ffffff;
-            --beige: #efefef;
-            --palegray: #fafafa;
-            --gray: #8e8e8e;
-            --darkgray: #262626;
-            --blue: #0095f6;
-            --black: #262626;
-        }
-
-        /*body 전체 적용*/
-        body {
-            background-color: var(--palegray);
-        }
-
-        /*상단 고정 네비게이션바*/
-        .navbar {
-            background-color: var(--white);
-            position: fixed;
-            top: 0px;
-            left: 0px;
-            height: 85px;
-            width: 100%;
-            z-index: 99;
-        }
-
-        /*상단 입력창 전체 정렬*/
-        .up_input {
-            /*돋보기 아이콘 가운데정렬*/
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            padding: 10px;
-            background-color: var(--palegray);
-            border-radius: 15px;
-            width: 100%;
-            border-radius: 16px;
-        }
-
-        /*상단 입력창 (돋보기+입력창)설정*/
-        input.nosubmit {
-            /*내부 여백*/
-            width: 100%;
-            padding: 0px 20px 0px 10px;
-            /*얘가투명*/
-            outline: none;
-            background: transparent;
-        }
-
-        /*상단 입력창 (입력창)설정*/
-        input[type='search'] {
-            border: none;
-            background: transparent;
-            font-size: 18px;
-        }
-
-        /*상단 입력시 글씨색*/
-        input[type='search']::placeholder {
-            color: var(--gray);
-        }
-
-        /*돋보기 아이콘 정렬*/
-        .icon {
-            margin-left: 10px;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /*우측 아이콘바 정렬*/
-        .icon-bar {
-            cursor: pointer;
-            overflow: hidden;
-            height: 53px;
-            width: 36%;
-            float: right;
-            margin-right: 100px;
-        }
-
-        /*아이콘바 여백 상세설정*/
-        .icon-bar a {
-            float: right;
-            width: 38px;
-            text-align: right;
-            /*각각의 아이콘 내부 여백*/
-            padding: 15px 0px 0px 0px;
-            color: var(--black);
-        }
-
-        /*body전체 nav바만큼 위에서 띄우기*/
-        .main-body {
-            margin-top: 85px;
-        }
-
-        /*프로필이미지채우기*/
-        .profile-img {
-            width: 100%;
-            height: 100%;
-
-        }
-
-        /*프로필이미지들어갈 원형박스*/
-        .profile-box {
-            width: 150px;
-            height: 150px;
-            border-radius: 70%;
-            overflow: hidden;
-            margin-left: 30px;
-            cursor: pointer;
-        }
-
-        /*프로필 윗부분 전체*/
-        .profile-bar {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            justify-content: space-between;
-
-            margin-top: 110px;
-        }
-
-        /*글씨속성지정-id*/
-        .myid {
-            color: var(--black);
-            font-size: 28px;
-            font-weight: lighter;
-        }
-
-        /*프로필영역 위에 오른쪽부분*/
-        .right {
-            padding-right: 250px;
-        }
-
-        .feed-box {
-            width: 850px;
-            margin: auto;
-        }
-
-        .myprofile_edit_button {
-            width: 120px;
-            border-radius: 9px;
-            border-color: var(--palegray);
-            background-color: transparent;
-        }
-
-        .feed-name {
-            margin-bottom: 30px;
-        }
-
-        .feed {
-            width: 1000px;
-            margin: auto;
-        }
-
-        .hidemobile {
-            margin-bottom: 30px;
-        }
-
-        .table {
-            margin-top: 50px;
-        }
-
-        .table-box {
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            margin: 0px 200px 0px 140px;
-
-        }
-
-        .grid-container {
-            max-width: 1000px;
-            display: grid;
-            column-gap: 70px;
-            row-gap: 20px;
-            grid-template-columns: 250px 250px 250px;
-            padding: 10px;
-        }
-
-        .page-footer {
-            margin: 100px auto 30px auto;
-            text-align: center;
-            color: #8e8e8e;
-        }
-
-        .main-body {
-            width: 100%;
-            max-width: 100%;
-            display: flex;
-            flex-direction: column;
-            margin: auto;
-        }
-        .level-item {
-            background-color: transparent;
-        }
-        .modal-content {
-            width: 500px;
-        }
-    </style>
-    <script>
-        function update_profile() {
-            let name = $('#input-name').val()
-            let file = $('#input-pic')[0].files[0]
-            let about = $("#textarea-about").val()
-            let form_data = new FormData()
-            form_data.append("file_give", file)
-            form_data.append("name_give", name)
-            form_data.append("about_give", about)
-            console.log(name, file, about, form_data)
-
-            $.ajax({
-                type: "POST",
-                url: "/update_profile",
-                data: form_data,
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    if (response["result"] == "success") {
-                        alert(response["msg"])
-                        window.location.reload()
-
-                    }
+        <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <title>Instagram</title>
+        <!-- favicon -->
+        <link rel="shortcut icon" href="../static/instagram_favicon.png" />
+        <style>
+            @media all and (max-width: 1000px) {
+                .desktop {
+                    display: none;
                 }
+            }
+
+            /*색상설정*/
+            :root {
+                --white: #ffffff;
+                --beige: #efefef;
+                --palegray: #fafafa;
+                --gray: #8e8e8e;
+                --darkgray: #262626;
+                --blue: #0095f6;
+                --black: #262626;
+            }
+
+            /*body 전체 적용*/
+            body {
+                background-color: var(--palegray);
+            }
+
+            /*상단 고정 네비게이션바*/
+            .navbar {
+                background-color: var(--white);
+                position: fixed;
+                top: 0px;
+                left: 0px;
+                height: 85px;
+                width: 100%;
+                z-index: 99;
+            }
+
+            /*상단 입력창 전체 정렬*/
+            .up_input {
+                /*돋보기 아이콘 가운데정렬*/
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                padding: 10px;
+                background-color: var(--palegray);
+                border-radius: 15px;
+                width: 100%;
+                border-radius: 16px;
+            }
+
+            /*상단 입력창 (돋보기+입력창)설정*/
+            input.nosubmit {
+                /*내부 여백*/
+                width: 100%;
+                padding: 0px 20px 0px 10px;
+                /*얘가투명*/
+                outline: none;
+                background: transparent;
+            }
+
+            /*상단 입력창 (입력창)설정*/
+            input[type='search'] {
+                border: none;
+                background: transparent;
+                font-size: 18px;
+            }
+
+            /*상단 입력시 글씨색*/
+            input[type='search']::placeholder {
+                color: var(--gray);
+            }
+
+            /*돋보기 아이콘 정렬*/
+            .icon {
+                margin-left: 10px;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            /*우측 아이콘바 정렬*/
+            .icon-bar {
+                cursor: pointer;
+                overflow: hidden;
+                height: 53px;
+                width: 36%;
+                float: right;
+                margin-right: 100px;
+            }
+
+            /*아이콘바 여백 상세설정*/
+            .icon-bar a {
+                float: right;
+                width: 38px;
+                text-align: right;
+                /*각각의 아이콘 내부 여백*/
+                padding: 15px 0px 0px 0px;
+                color: var(--black);
+            }
+
+            /*body전체 nav바만큼 위에서 띄우기*/
+            .main-body {
+                margin-top: 85px;
+            }
+
+            /*프로필이미지채우기*/
+            .profile-img {
+                width: 100%;
+                height: 100%;
+            }
+
+            /*프로필이미지들어갈 원형박스*/
+            .profile-box {
+                width: 150px;
+                height: 150px;
+                border-radius: 70%;
+                overflow: hidden;
+                margin-left: 30px;
+                cursor: pointer;
+            }
+
+            /*프로필 윗부분 전체*/
+            .profile-bar {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                justify-content: space-between;
+
+                margin-top: 110px;
+            }
+
+            /*글씨속성지정-id*/
+            .myid {
+                color: var(--black);
+                font-size: 28px;
+                font-weight: lighter;
+            }
+
+            /*프로필영역 위에 오른쪽부분*/
+            .right {
+                padding-right: 250px;
+            }
+
+            .feed-box {
+                width: 850px;
+                margin: auto;
+            }
+
+            .myprofile_edit_button {
+                width: 120px;
+                border-radius: 9px;
+                border-color: var(--palegray);
+                background-color: transparent;
+            }
+
+            .feed-name {
+                margin-bottom: 30px;
+            }
+
+            .feed {
+                width: 1000px;
+                margin: auto;
+            }
+
+            .hidemobile {
+                margin-bottom: 30px;
+            }
+
+            .table {
+                margin-top: 50px;
+            }
+
+            .table-box {
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                margin: 0px 200px 0px 140px;
+            }
+
+            .grid-container {
+                max-width: 1000px;
+                display: grid;
+                column-gap: 70px;
+                row-gap: 20px;
+                grid-template-columns: 250px 250px 250px;
+                padding: 10px;
+            }
+
+            .page-footer {
+                margin: 100px auto 30px auto;
+                text-align: center;
+                color: #8e8e8e;
+            }
+
+            .main-body {
+                width: 100%;
+                max-width: 100%;
+                display: flex;
+                flex-direction: column;
+                margin: auto;
+            }
+            .level-item {
+                background-color: transparent;
+            }
+            .modal-content {
+                width: 500px;
+            }
+
+            .modal_overlay {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                background: rgba(0, 0, 0, 0.8);
+                backdrop-filter: blur(1.5px);
+                -webkit-backdrop-filter: blur(1.5px);
+                z-index: 1;
+                position: fixed;
+            }
+
+            .modal_window {
+                background: white;
+                backdrop-filter: blur(13.5px);
+                -webkit-backdrop-filter: blur(13.5px);
+                border-radius: 10px;
+                border: 1px solid rgba(255, 255, 255, 0.18);
+                width: 600px;
+                height: 600px;
+                position: relative;
+                padding: 10px;
+            }
+
+            .photo_text {
+                display: flex;
+                justify-content: space-between;
+                color: #262626;
+            }
+        </style>
+        <script>
+            function update_profile() {
+                let name = $('#input-name').val();
+                let file = $('#input-pic')[0].files[0];
+                let about = $('#textarea-about').val();
+                let form_data = new FormData();
+                form_data.append('file_give', file);
+                form_data.append('name_give', name);
+                form_data.append('about_give', about);
+                console.log(name, file, about, form_data);
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/update_profile',
+                    data: form_data,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        if (response['result'] == 'success') {
+                            alert(response['msg']);
+                            window.location.reload();
+                        }
+                    },
+                });
+            }
+
+            $(document).ready(function () {
+                listing();
+                bsCustomFileInput.init();
+                show_following();
             });
-        }
-    </script>
-</head>
-<body>
-<!-- 네비게이션 바 -->
-<div class="navbar">
-    <!-- 로고 -->
-    <a href="/"><img class="img_margin" src="../static/instagram.png"/></a>
 
-    <!-- 검색창 -->
-    <div class="desktop">
-        <div class="up_input nosubmit">
-            <i class="icon fa fa-search"></i>
-            <input class="nosubmit" type="search" placeholder="검색"/>
-        </div>
-    </div>
-    <!-- 아이콘박스 -->
-    <div class="icon-bar">
-        <a> <img class="profile-img"
-                 style="width: 25px; height: 25px;border-radius: 70%; overflow: hidden; margin-bottom: 5px;"
-                 src="{{ url_for('static', filename=user_info.profile_pic_real) }}"></a>
-        <a href="#"><i class="fa fa-heart fa-lg"></i></a>
-        <a href="#"><i class="fa fa-globe fa-lg"></i></a>
-        <a href="#"><i class="fa fa-plus-square fa-lg"></i></a>
-        <a href="#"><i class="fa fa-plane fa-lg"></i></a>
-        <a href="#"><i class="fa fa-home fa-lg"></i></a>
-    </div>
-</div>
-<!-- 네비게이션 바 끝-->
-<!-- 메인body-->
-<div class="main-body">
-    <div class="feed">
-        <!--        프로필윗부분-->
-        <div class="feed-box">
-            <div class="profile-bar">
-                <div class="profile-box">
-                    <img class="profile-img"
-                         src="{{ url_for('static', filename=user_info.profile_pic_real) }}"/>
-                </div>
-                <div class="right">
-                    <div class="feed-name">
-                        <a href="/user/{{ user_info.username }}" class="myid">{{ user_info.username }}</a>ㅤㅤ
-                        <!-- 프로필 편집버튼과 아이콘 -->
-                            <button class=" myid_3 myprofile_edit_button" aria-label="edit"
-                           onclick='$("#modal-edit").addClass("is-active")'>프로필 편집</button>
+            function open_photo_box() {
+                $('#upload_photo').click(function () {
+                    $('#first_modal').css({
+                        display: 'flex',
+                    });
+                    $(document.body).css({
+                        overflow: 'visible',
+                    });
+                });
+            }
 
-                        <div class="modal" id="modal-edit">
-                            <div class="modal-background" onclick='$("#modal-edit").removeClass("is-active")'></div>
-                            <div class="modal-content">
-                                <div class="box">
-                                    <article class="media">
-                                        <div class="media-content">
-                                            <div class="field">
-                                                <label class="label" for="input-pic">프로필 사진</label>
-                                                <div class="control is-expanded">
-                                                    <div class="file has-name">
-                                                        <label class="file-label" style="width:100%">
-                                                            <input id="input-pic" class="file-input" type="file"
-                                                                   name="resume">
-                                                            <span class="file-cta"><span class="file-icon"><i
-                                                                    class="fa fa-upload"></i></span>
-                                    <span class="file-label">파일 선택</span>
-                                </span>
-                                                            <span id="file-name" class="file-name"
-                                                                  style="width:100%;max-width:100%">{{ user_info.profile_pic }}</span>
-                                                        </label>
+            function close_photo_box() {
+                $('#close_photo').click(function () {
+                    $('#first_modal').css({
+                        display: 'none',
+                    });
+                    $(document.body).css({
+                        overflow: 'visible',
+                    });
+                });
+            }
+
+            function posting() {
+                let content_txt = $('#content_txt').val();
+                let content_photo = $('#content_photo')[0].files[0];
+
+                let form_data = new FormData();
+                form_data.append('content_photo_give', content_photo);
+                form_data.append('content_txt_give', content_txt);
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/content',
+                    data: form_data,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        alert(response['msg']);
+                        window.location.reload();
+                    },
+                });
+            }
+
+            function listing() {
+                $.ajax({
+                    type: 'GET',
+                    url: '/listing',
+                    data: {},
+                    success: function (response) {
+                        let contents = response['contents'];
+                        for (let i = 0; i < contents.length; i++) {
+                            let content_txt = contents[i]['content_txt'];
+                            let content_photo = contents[i]['content_photo'];
+
+                            let temp_html = `<div class="card" style="width: 293px; height: 293px; object-fit: cover; display: inline-block">
+                                                    <img src="../static/${content_photo}" class="card-img-top">
+                                                    <div class="card-body">
+                                                        <p class="card-text">${content_txt}</p>
                                                     </div>
-                                                </div>
+                                                </div>`;
+
+                            $('#cards_box').append(temp_html);
+                        }
+                    },
+                });
+            }
+
+            function show_following() {
+                $.ajax({
+                    type: 'GET',
+                    url: '/follow',
+                    data: {},
+                    success: function (response) {
+                        let rows = response['following'];
+                        for (let i = 0; i < rows.length; i++) {
+                            let id = rows[i]['target_id'];
+                            let pic = rows[i]['target_pic'];
+
+                            let temp_html = `<div class="feed_name" style="justify-content: space-between">
+                                            <div class="profile_box">
+                                                <img class="profile_img"
+                                                src="${pic}"
                                             </div>
-                                            <nav class="level is-mobile">
-                                                <div class="level-left">
+                                            <div class="name_content">
 
-                                                </div>
-                                                <div class="level-right">
-                                                    <div class="level-item">
-                                                        <a class="button is-sparta" onclick="update_profile()">업데이트</a>
+                                                <span class="name_content_txt"> "${id}"</span>
+
+                                            </div>
+                                            <input value="팔로잉"
+                                                   onclick="if(this.parentNode.getElementsByTagName('div')[0].style.display != ''){this.parentNode.getElementsByTagName('div')[0].style.display = '';this.value = '팔로우';}else{this.parentNode.getElementsByTagName('div')[0].style.display = 'none'; this.value = '팔로잉';}"
+                                                   type="button"
+                                                   style="border-radius: 5px; cursor: pointer; background-color: blue; color: mintcream; font-size: 14px"/>
+                                        </div>`;
+                            $('#test').append(temp_html);
+                        }
+                    },
+                });
+            }
+
+            function follow(e) {
+                let target_id = e.target.parentNode.querySelector('.feed-name-text').innerHTML;
+                let target_pic = e.target.parentNode.getElementsByTagName('img')[0].getAttribute('src');
+                $.ajax({
+                    type: 'POST',
+                    url: '/follow',
+                    data: {
+                        target_id_give: target_id,
+                        target_pic_give: target_pic,
+                    },
+                    success: function (response) {
+                        alert;
+                    },
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <!-- 네비게이션 바 -->
+        <div class="navbar">
+            <!-- 로고 -->
+            <a href="/"><img class="img_margin" src="../static/instagram.png" /></a>
+
+            <!-- 검색창 -->
+            <div class="desktop">
+                <div class="up_input nosubmit">
+                    <i class="icon fa fa-search"></i>
+                    <input class="nosubmit" type="search" placeholder="검색" />
+                </div>
+            </div>
+            <!-- 아이콘박스 -->
+            <div class="icon-bar">
+                <a>
+                    <img
+                        class="profile-img"
+                        style="width: 25px; height: 25px; border-radius: 70%; overflow: hidden; margin-bottom: 5px"
+                        src="{{ url_for('static', filename=user_info.profile_pic_real) }}"
+                /></a>
+                <a href="#"><i class="fa fa-heart fa-lg"></i></a>
+                <a><i class="fa fa-globe fa-lg"></i></a>
+                <a><i onclick="open_photo_box()" id="upload_photo" class="fa fa-plus-square fa-lg"></i></a>
+                <a><i class="fa fa-plane fa-lg"></i></a>
+                <a href="#"><i class="fa fa-home fa-lg"></i></a>
+            </div>
+        </div>
+        <!--첫번째 모달-->
+        <div id="first_modal" class="modal_overlay">
+            <div class="modal_window">
+                <div class="photo_text">
+                    <div style="width: 12.5px"></div>
+                    <div>새 게시물 만들기</div>
+                    <div>
+                        <i onclick="close_photo_box()" id="close_photo" class="fa-solid fa-xmark fa-lg"></i>
+                    </div>
+                </div>
+                <div>
+                    <hr />
+                </div>
+                <div class="posting-box">
+                    <div class="form-group">
+                        <textarea class="form-control" id="content_txt" rows="3" placeholder="내용 입력" style="height: 400px"></textarea>
+                    </div>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="content_photo" />
+                        <label class="custom-file-label" for="file">Choose file</label>
+                    </div>
+                    <button onclick="posting()" type="button" class="btn btn-primary" style="margin: 20px 0 0 0">저장하기</button>
+                </div>
+            </div>
+        </div>
+        <!-- 네비게이션 바 끝-->
+
+        <div class="modal" id="followingModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" id="test">
+                    <div class="feed-name" style="justify-content: space-between"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="followersModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" style="background-color: whitesmoke" role="document">
+                <div class="modal-body" style="padding: 30px">
+                    <div class="feed_name" style="justify-content: space-between">
+                        <div class="profile_box">
+                            <img class="profile_img" src="https://i.pinimg.com/736x/3f/94/70/3f9470b34a8e3f526dbdb022f9f19cf7.jpg" />
+                        </div>
+                        <div class="name_content">
+                            <span class="feed_name_txt"> tagname </span>
+                        </div>
+                        <button type="button" class="btn btn-primary btn-sm">Follow</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="side-item feed-name">
+                <div class="side-small-profile-imgbox profile-box">
+                    <img class="side-img profile-img" src="../static/animal_1.png" />
+                </div>
+
+                <div class="side-name-text name-content">
+                    <span class="side-small-profile-namebox feed-name-text"> IU </span>
+                    <span class="side-small-profile-desc name-content-text"> Instargram 신규가입 </span>
+                </div>
+
+                <input
+                    value="팔로우"
+                    onclick="follow(event);this.parentNode.getElementsByTagName('input')[1].style.display = ''; this.parentNode.getElementsByTagName('input')[0].style.display = 'none';"
+                    type="button"
+                    class="side-follow-text"
+                    style="border-radius: 5px; cursor: pointer; background-color: mediumblue; color: mintcream; font-size: 14px"
+                />
+                <input
+                    value="팔로잉"
+                    onclick="this.parentNode.getElementsByTagName('input')[0].style.display = ''; this.parentNode.getElementsByTagName('input')[1].style.display = 'none';"
+                    type="button"
+                    class="side-follow-text"
+                    style="display: none; border-radius: 5px; cursor: pointer; background-color: white; color: black; font-size: 14px"
+                />
+            </div>
+        </div>
+
+        <!-- 메인body-->
+        <div class="main-body">
+            <div class="feed">
+                <!--        프로필윗부분-->
+                <div class="feed-box">
+                    <div class="profile-bar">
+                        <div class="profile-box">
+                            <img class="profile-img" src="{{ url_for('static', filename=user_info.profile_pic_real) }}" />
+                        </div>
+                        <div class="right">
+                            <div class="feed-name">
+                                <a href="/user/{{ user_info.username }}" class="myid">{{ user_info.username }}</a>ㅤㅤ
+                                <!-- 프로필 편집버튼과 아이콘 -->
+                                <button class="myid_3 myprofile_edit_button" aria-label="edit" onclick='$("#modal-edit").addClass("is-active")'>프로필 편집</button>
+
+                                <div class="modal" id="modal-edit">
+                                    <div class="modal-background" onclick='$("#modal-edit").removeClass("is-active")'></div>
+                                    <div class="modal-content">
+                                        <div class="box">
+                                            <article class="media">
+                                                <div class="media-content">
+                                                    <div class="field">
+                                                        <label class="label" for="input-pic">프로필 사진</label>
+                                                        <div class="control is-expanded">
+                                                            <div class="file has-name">
+                                                                <label class="file-label" style="width: 100%">
+                                                                    <input id="input-pic" class="file-input" type="file" name="resume" />
+                                                                    <span class="file-cta"
+                                                                        ><span class="file-icon"><i class="fa fa-upload"></i></span>
+                                                                        <span class="file-label">파일 선택</span>
+                                                                    </span>
+                                                                    <span id="file-name" class="file-name" style="width: 100%; max-width: 100%">{{ user_info.profile_pic }}</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="level-item">
-                                                        <a class="button is-sparta is-outlined"
-                                                           onclick='$("#modal-edit").removeClass("is-active")'>취소</a>
-                                                    </div>
+                                                    <nav class="level is-mobile">
+                                                        <div class="level-left"></div>
+                                                        <div class="level-right">
+                                                            <div class="level-item">
+                                                                <a class="button is-sparta" onclick="update_profile()">업데이트</a>
+                                                            </div>
+                                                            <div class="level-item">
+                                                                <a class="button is-sparta is-outlined" onclick='$("#modal-edit").removeClass("is-active")'>취소</a>
+                                                            </div>
+                                                        </div>
+                                                    </nav>
                                                 </div>
-                                            </nav>
+                                            </article>
                                         </div>
-                                    </article>
+                                    </div>
+                                    <button class="modal-close is-large" aria-label="close" onclick='$("#modal-edit").removeClass("is-active")'></button>
+                                </div>
+                                <i class="fa-solid fa-cog" style="cursor: pointer"></i>
+                            </div>
+                            <div class="hidemobile">
+                                <span>게시물 <b>4</b></span
+                                >ㅤㅤ
+                                <div class="following">
+                                    <button
+                                        onclick="show_following()"
+                                        type="button"
+                                        style="margin: auto; color: black; height: 30px; background-color: magenta; border: 0px"
+                                        class="btn btn-primary"
+                                        data-toggle="modal"
+                                        data-target="#followingModal"
+                                    >
+                                        <span style="display: flex; flex-direction: row; color: black">팔로잉 <b>{following_count}</b>명</span>
+                                    </button>
+                                </div>
+
+                                <div class="followers">
+                                    <button
+                                        onclick="show_following()"
+                                        type="button"
+                                        style="margin: auto; color: black; height: 30px; background-color: light; border: 0px"
+                                        class="btn btn-primary"
+                                        data-toggle="modal"
+                                        data-target="#followersModal"
+                                    >
+                                        <span style="display: flex; flex-direction: row; color: black">팔로워 <b>{follower_count}</b>명</span>
+                                    </button>
                                 </div>
                             </div>
-                            <button class="modal-close is-large" aria-label="close"
-                                    onclick='$("#modal-edit").removeClass("is-active")'></button>
                         </div>
-                        <i class="fa-solid fa-cog" style="cursor: pointer"></i>
-                    </div>
-                    <div class="hidemobile">
-                        <span>게시물 <b>4</b></span>ㅤㅤ
-                        <a href="#about" class="myid_1" style="color: black">팔로워 <b>5</b></a>ㅤㅤ
-                        <a href="#about" class="myid_1" style="color: black">팔로우 <b>7</b></a>
                     </div>
                 </div>
+                <!--        프로필부분끝-->
+                <!--        게시물 저장됨 태그됨-->
+                <div class="photo">
+                    <div class="table">
+                        <hr style="border: 0; width: 95%" />
+                        <div class="table-box">
+                            <span>게시물</span>
+                            <span>저장됨</span>
+                            <span>팔로워</span>
+                        </div>
+                        <hr style="border: 0; width: 95%" />
+                    </div>
+                    <!--        게시물 저장됨 태그됨 끝-->
+                    <!--            사진정렬-->
+                    <div class="grid-container" id="cards_box">
+                        <div class="grid-item">
+                            <a href="#about"><img class="img_margin" src="../static/sample_image_1.png" /></a>
+                        </div>
+                        <div class="grid-item">
+                            <a href="#about"><img class="img_margin" src="../static/sample_image_1.png" /></a>
+                        </div>
+                        <div class="grid-item">
+                            <a href="#about"><img class="img_margin" src="../static/sample_image_1.png" /></a>
+                        </div>
+                        <div class="grid-item">
+                            <a href="#about"><img class="img_margin" src="../static/sample_image_1.png" /></a>
+                        </div>
+                        <div class="grid-item">
+                            <a href="#about"><img class="img_margin" src="../static/sample_image_1.png" /></a>
+                        </div>
+                        <div class="grid-item">
+                            <a href="#about"><img class="img_margin" src="../static/sample_image_1.png" /></a>
+                        </div>
+                        <div class="grid-item">
+                            <a href="#about"><img class="img_margin" src="../static/sample_image_1.png" /></a>
+                        </div>
+                        <div class="grid-item">
+                            <a href="#about"><img class="img_margin" src="../static/sample_image_1.png" /></a>
+                        </div>
+                        <div class="grid-item">
+                            <a href="#about"><img class="img_margin" src="../static/sample_image_1.png" /></a>
+                        </div>
+                    </div>
+                    <!--            사진정렬 끝-->
+                </div>
             </div>
+            <!--    footer 시작-->
+            <footer class="page-footer amber darken-2">
+                <a
+                    ><br /><br />
+                    소개.도움말.홍보 센터.API.채용정보<br />
+                    개인정보처리방침.약관.위치.인기 계정.해시태그/언어<br /><br />
+                    @2022 INSTAGRAM FROM SOIYO
+                </a>
+            </footer>
+            <!--    footer 끝-->
         </div>
-        <!--        프로필부분끝-->
-        <!--        게시물 저장됨 태그됨-->
-        <div class="photo">
-            <div class="table">
-                <hr style="border: 0; width: 95%;">
-                <div class="table-box">
-                    <span>게시물</span>
-                    <span>저장됨</span>
-                    <span>팔로워</span>
-                </div>
-                <hr style="border: 0; width: 95%; ">
-            </div>
-            <!--        게시물 저장됨 태그됨 끝-->
-            <!--            사진정렬-->
-            <div class="grid-container">
-                <div class="grid-item"><a href="#about"><img class="img_margin" src="../static/sample_image_1.png"/></a>
-                </div>
-                <div class="grid-item"><a href="#about"><img class="img_margin" src="../static/sample_image_1.png"/></a>
-                </div>
-                <div class="grid-item"><a href="#about"><img class="img_margin" src="../static/sample_image_1.png"/></a>
-                </div>
-                <div class="grid-item"><a href="#about"><img class="img_margin" src="../static/sample_image_1.png"/></a>
-                </div>
-                <div class="grid-item"><a href="#about"><img class="img_margin" src="../static/sample_image_1.png"/></a>
-                </div>
-                <div class="grid-item"><a href="#about"><img class="img_margin" src="../static/sample_image_1.png"/></a>
-                </div>
-                <div class="grid-item"><a href="#about"><img class="img_margin" src="../static/sample_image_1.png"/></a>
-                </div>
-                <div class="grid-item"><a href="#about"><img class="img_margin" src="../static/sample_image_1.png"/></a>
-                </div>
-                <div class="grid-item"><a href="#about"><img class="img_margin" src="../static/sample_image_1.png"/></a>
-                </div>
-            </div>
-            <!--            사진정렬 끝-->
-        </div>
-    </div>
-    <!--    footer 시작-->
-    <footer class="page-footer amber darken-2">
-        <a><br><br/>
-            소개.도움말.홍보 센터.API.채용정보<br/>
-            개인정보처리방침.약관.위치.인기 계정.해시태그/언어<br/><br/>
-            @2022 INSTAGRAM FROM SOIYO
-        </a>
-    </footer>
-    <!--    footer 끝-->
-</div>
-<!-- 메인body끝-->
-</body>
+        <!-- 메인body끝-->
+    </body>
 </html>
-

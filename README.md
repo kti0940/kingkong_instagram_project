@@ -40,7 +40,7 @@
 
 ### 레이아웃
 
-![instagram_layout](static/team_kingkong_instagram_layout.png)
+![instagram_layout](./static/team_kingkong_instagram_layout.png)
 
 ### 구현 기능
 

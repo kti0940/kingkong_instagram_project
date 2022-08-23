@@ -38,10 +38,6 @@
 
 <img alt="Slack" src ="https://img.shields.io/badge/Slack-8A576D.svg?&style=for-the-badge&logo=Slack&logoColor=black"/> <img alt="Trello" src ="https://img.shields.io/badge/Trello-518bff.svg?&style=for-the-badge&logo=Trello&logoColor=black"/>
 
-### 레이아웃
-
-![instagram_layout](./static/team_kingkong_instagram_layout.png)
-
 ### 구현 기능
 
 **login.html**

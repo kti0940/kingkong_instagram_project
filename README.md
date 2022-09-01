@@ -66,5 +66,5 @@
 2. 사진 호버 시 사진 검은색으로 변하고 현재 좋아요, 댓글 수 불러오기
 
 ## 👀 기능구현동영상
-[![IMAGE ALT TEXT HERE](https://iboxcomein.com/wp-content/uploads/2021/08/%EC%9C%A0%ED%8A%9C%EB%B8%8C_%EB%A1%9C%EA%B3%A0.png)]([https://www.youtube.com/watch?v=a4cWlUi9wSE&t=1s)
+[![IMAGE ALT TEXT HERE](https://iboxcomein.com/wp-content/uploads/2021/08/%EC%9C%A0%ED%8A%9C%EB%B8%8C_%EB%A1%9C%EA%B3%A0.png)](https://www.youtube.com/watch?v=a4cWlUi9wSE&t=1s)
 ![Footer](https://capsule-render.vercel.app/api?type=waving&color=BEA791&height=200&section=footer)

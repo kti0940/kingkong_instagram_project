@@ -12,10 +12,6 @@
 -   05.03.22 ~ 05.11.22
 
 ## 멤버구성 & 파트분배
-
--   Front-End + Back-End -> 윤가현, 문명주
--   Back-End -> 김철현, 김태인
-
 -   <a href="https://github.com/KimmyJay"><img 
           src="http://img.shields.io/badge/-Git%20Hub-010000?style=flat&logo=github&link=https://alpox.kr"
           style="height : auto; margin-left : 10px; margin-right : 10px;"/></a> 김철현 -> backend
@@ -70,5 +66,5 @@
 2. 사진 호버 시 사진 검은색으로 변하고 현재 좋아요, 댓글 수 불러오기
 
 ## 👀 기능구현동영상
-[![IMAGE ALT TEXT HERE](https://iboxcomein.com/wp-content/uploads/2021/08/%EC%9C%A0%ED%8A%9C%EB%B8%8C_%EB%A1%9C%EA%B3%A0.png)]([https://www.youtube.com/watch?v=oQBAiwyp5n4](https://www.youtube.com/watch?v=a4cWlUi9wSE&t=1s))
+[![IMAGE ALT TEXT HERE](https://iboxcomein.com/wp-content/uploads/2021/08/%EC%9C%A0%ED%8A%9C%EB%B8%8C_%EB%A1%9C%EA%B3%A0.png)]([https://www.youtube.com/watch?v=a4cWlUi9wSE&t=1s)
 ![Footer](https://capsule-render.vercel.app/api?type=waving&color=BEA791&height=200&section=footer)
